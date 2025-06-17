@@ -78,7 +78,7 @@ Also CNCF, Linux Foundation, JCP EC, etc...
 
 # Alpaquita Linux
 
-- Based off Alpine
+- Based on Alpine
 - Performance optimizations for musl
 - Version with glibc
 - Multiple languages
@@ -234,7 +234,7 @@ flowchart LR
     B --> C[Deploy to repo]
     C --> D[Rebuild Alpaquita base]
     D --> E[Rebuild Java]
-    D --> F[Rebuild Pyton]
+    D --> F[Rebuild Python]
 ```
 
 ---
@@ -280,4 +280,4 @@ Open source isn't just code — it's a contract with the community
 Let’s make software that’s secure
 because it’s open, not in spite of it.
 
-@asm0dey | bell-sw.com
+🦋 @asm0dey.site | bell-sw.com
