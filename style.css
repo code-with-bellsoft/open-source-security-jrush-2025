@@ -1,0 +1,175 @@
+/* Import a fitting cyberpunk/tech font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Anta:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+/* --- General Slidev Layout & Background --- */
+.slidev-layout {
+  position: relative; /* Needed to contain the pseudo-element */
+  overflow: hidden; /* Ensures blur doesn't bleed outside slide bounds */
+}
+
+.slidev-layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/background.jpg"); /* Your background image */
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Puts the background behind content */
+  transition: filter 0.5s ease-out; /* Smooth transition for blur */
+  pointer-events: none; /* Allows interaction with content above */
+}
+
+.slidev-layout:not(.slidev-layout-cover)::before {
+  filter: brightness(0.7) blur(9px); /* Adjust this value for more or less extreme blur */
+}
+
+.slidev-layout.two-columns,
+.slidev-layout.two-cols-header {
+  display: flex; /* Enables flexbox for column arrangement */
+  gap: 2rem; /* Adjust this value (e.g., 2rem, 4rem) for your desired gap */
+  justify-content: space-around; /* Distributes space between and around items */
+}
+
+/* Ensures the direct children (the columns) within the two-cols layout behave correctly */
+.slidev-layout.two-columns > div {
+  flex: 1; /* Makes each column take equal available space */
+  min-width: 0; /* Prevents content inside columns from overflowing */
+}
+.slidev-layout.two-cols-header > .col-left,
+.slidev-layout.two-cols-header > .col-right {
+  flex: 1; /* Makes each column take equal available space */
+  min-width: 0; /* Prevents content inside columns from overflowing */
+}
+/* --- Default Text Styling --- */
+.slidev-page {
+  color: #e0e0e0; /* A light grey/off-white for good readability */
+}
+
+/* --- Translucent Background for Text Elements --- */
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol {
+  background-color: rgba(10, 25, 47, 0.75); /* A dark, translucent blue */
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #f0f000; /* Yellow accent border */
+  backdrop-filter: blur(
+    5px
+  ); /* Adds a blur effect to the background behind the element */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: left;
+}
+
+/* --- Heading Specific Styles --- */
+h1 {
+  font-weight: 700;
+  color: #ffff00; /* Bright Neon Yellow for main titles */
+  /* Reduced glow and blur */
+  text-shadow: 0 0 3px #ffff00; /* Less intense glow */
+  border-color: #ffff00; /* Match border to text color */
+  font-family: "Anta", sans-serif; /* Keep Orbitron for main titles */
+}
+
+h2 {
+  color: #00ffff; /* Neon Cyan for subtitles */
+  border-color: #00ffff; /* Match border to text color */
+  font-family: "Anta", sans-serif; /* Keep Orbitron for main titles */
+}
+h3 {
+  font-family: "Anta", sans-serif; /* Keep Orbitron for main titles */
+}
+
+h4 {
+  font-family: "Anta", sans-serif; /* Keep Orbitron for main titles */
+}
+/* --- Links and other elements --- */
+a {
+  color: #ffff00; /* Yellow for links */
+  text-decoration: none;
+  border-bottom: 1px dashed #ffff00;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  background-color: #ffff00;
+  color: #1a1a1a;
+  text-shadow: none;
+}
+
+/* --- Code Blocks --- */
+pre {
+  font-family: "JetBrains Mono" !important; /* Removed 'imo' typo */
+  background-color: rgba(
+    10,
+    25,
+    47,
+    0.85
+  ) !important; /* Override default themes */
+  border-radius: 8px;
+  border: 1px solid #00ffff; /* Cyan border for code - This is already blue */
+  padding: 1em;
+}
+
+code {
+  font-family: "JetBrains Mono" imo !important;
+}
+
+/* --- Footer (Page number) --- */
+.slidev-page-total,
+.slidev-page-current {
+  color: #e0e0e0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* --- Quotes Specific Style --- */
+blockquote {
+  background-color: rgba(
+    30,
+    60,
+    90,
+    0.9
+  ); /* Slightly lighter/more opaque dark blue */
+  border-left: 8px solid #00ffcc; /* A distinct cyan/green border for quotes */
+  padding: 1.5rem 2rem; /* More padding to stand out */
+  font-style: italic;
+  color: #ddeeff; /* Slightly different text color for quotes */
+  position: relative; /* For pseudo-element */
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); /* Subtle glow matching new border */
+
+  /* Align with other content blocks */
+  box-sizing: border-box;
+}
+
+/* Ensure paragraph style inside blockquote doesn't conflict */
+blockquote p {
+  background: none; /* Remove background from p inside blockquote */
+  border: none; /* Remove border from p inside blockquote */
+  padding: 0; /* Remove padding from p inside blockquote */
+  margin: 0; /* Remove margin from p inside blockquote */
+  color: inherit; /* Inherit color from blockquote */
+  margin-left: 8%; /* Adjust margin to differentiate or align */
+  font-size: inherit; /* Inherit font size from blockquote */
+}
+
+/* Optional: Add a large, stylized opening quote mark for visual flair */
+blockquote::before {
+  content: "“"; /* Unicode left double quotation mark */
+  font-family: "Orbitron", sans-serif; /* Use heading font for the mark */
+  font-size: 5em; /* Large size */
+  color: rgba(0, 255, 204, 0.2); /* Translucent, matching border */
+  position: absolute;
+  top: -0.2em; /* Adjust vertical position */
+  left: 0.05em; /* Adjust horizontal position */
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
